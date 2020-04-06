@@ -16,6 +16,7 @@ import com.daniln.testmvvm.ui.ListItemViewModel
 import com.daniln.testmvvm.ui.ListItemViewModelFactory
 import com.daniln.testmvvm.ui.adapters.ItemsAdapter
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.cell.*
 import kotlinx.android.synthetic.main.fragment_todo_list.*
 import javax.inject.Inject
 
@@ -48,6 +49,7 @@ class TodoListFragment : Fragment() {
                 printMessage(R.string.cannot_add_value)
             } else {
                 listItemViewModel.add(text)
+                TextEdit_item.setText("")
                 printMessage(R.string.value_added)
             }
         }

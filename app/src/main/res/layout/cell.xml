@@ -7,13 +7,12 @@
 
     <TextView
         android:id="@+id/itemCell"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         tools:text="test"
         android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/deleteButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,12 +22,4 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.70" />
-    <Button
-        android:id="@+id/deleteButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/delete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
