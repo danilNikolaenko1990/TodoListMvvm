@@ -10,4 +10,7 @@ interface ItemDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(item: Item)
+
+    @Query("DELETE FROM Item")
+    fun deleteAll()
 }

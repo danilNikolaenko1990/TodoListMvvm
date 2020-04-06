@@ -16,4 +16,12 @@ class ListItemViewModel(private val itemRepository: ItemRepository) : ViewModel(
             }
         }
     }
+
+    fun removeAll() {
+        GlobalScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
+                itemRepository.deleteAll()
+            }
+        }
+    }
 }

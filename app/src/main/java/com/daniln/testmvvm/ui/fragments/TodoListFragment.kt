@@ -15,6 +15,7 @@ import com.daniln.testmvvm.R
 import com.daniln.testmvvm.ui.ListItemViewModel
 import com.daniln.testmvvm.ui.ListItemViewModelFactory
 import com.daniln.testmvvm.ui.adapters.ItemsAdapter
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_todo_list.*
 import javax.inject.Inject
 
@@ -41,11 +42,26 @@ class TodoListFragment : Fragment() {
             mItemsAdapter.setup(it)
         })
 
-        textButton.setOnClickListener {
-            listItemViewModel.add(TextEdit_item.text.toString())
+        createButton.setOnClickListener {
+            val text = TextEdit_item.text.toString()
+            if (text.isEmpty()) {
+                printMessage(R.string.cannot_add_value)
+            } else {
+                listItemViewModel.add(text)
+                printMessage(R.string.value_added)
+            }
+        }
+
+        deleteAllButton.setOnClickListener {
+            listItemViewModel.removeAll()
+            printMessage(R.string.list_was_cleared)
         }
 
         super.onActivityCreated(savedInstanceState)
+    }
+
+    private fun printMessage(errorText: Int) {
+        Snackbar.make(todoList_fragment, errorText, Snackbar.LENGTH_LONG).show();
     }
 
     @SuppressLint("WrongConstant")

@@ -13,4 +13,8 @@ class DbItemRepository(private val dao: ItemDao) : ItemRepository {
     override suspend fun insert(item: Item) {
         dao.insert(item)
     }
+
+    override suspend fun deleteAll() {
+        dao.deleteAll()
+    }
 }
