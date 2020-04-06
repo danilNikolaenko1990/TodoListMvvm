@@ -1,37 +1,19 @@
 package com.daniln.testmvvm.ui
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.daniln.testmvvm.domain.Item
+import com.daniln.testmvvm.domain.ItemRepository
 import kotlinx.coroutines.*
 
-class ListItemViewModel : ViewModel() {
-    private val itemList = mutableListOf<Item>()
-
-    val items: MutableLiveData<List<Item>> by lazy {
-        MutableLiveData<List<Item>>().also {
-            GlobalScope.launch(Dispatchers.Main) {
-                withContext(Dispatchers.IO) {
-                    fetchItems()
-                }
-                it.value = itemList
-            }
-        }
-    }
+class ListItemViewModel(private val itemRepository: ItemRepository) : ViewModel() {
+    val items: LiveData<List<Item>> = itemRepository.getAll()
 
     fun add(text: String) {
         GlobalScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
-                itemList.add(Item(text))
+                itemRepository.insert(Item(text))
             }
-            items.value = itemList
         }
-    }
-
-    private suspend fun fetchItems() {
-        delay(500)
-        itemList.add(Item("test1"))
-        itemList.add(Item("test2"))
-        itemList.add(Item("test3"))
     }
 }

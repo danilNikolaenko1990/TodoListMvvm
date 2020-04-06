@@ -10,21 +10,27 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
-
+import com.daniln.testmvvm.AndroidApplication
 import com.daniln.testmvvm.R
 import com.daniln.testmvvm.ui.ListItemViewModel
+import com.daniln.testmvvm.ui.ListItemViewModelFactory
 import com.daniln.testmvvm.ui.adapters.ItemsAdapter
 import kotlinx.android.synthetic.main.fragment_todo_list.*
+import javax.inject.Inject
 
 class TodoListFragment : Fragment() {
     private lateinit var listItemViewModel: ListItemViewModel
 
+    @Inject
+    lateinit var viewModelFactory: ListItemViewModelFactory;
+
     private var mItemsAdapter: ItemsAdapter = ItemsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (activity?.application as AndroidApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
-
-        listItemViewModel = ViewModelProvider(this).get(ListItemViewModel::class.java)
+        listItemViewModel =
+            ViewModelProvider(this, viewModelFactory).get(ListItemViewModel::class.java)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

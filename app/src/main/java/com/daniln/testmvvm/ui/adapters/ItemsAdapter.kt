@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.daniln.testmvvm.R
 import com.daniln.testmvvm.domain.Item
 
-class ItemsAdapter() :
+class ItemsAdapter :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var itemsList: ArrayList<Item> = ArrayList()
 
