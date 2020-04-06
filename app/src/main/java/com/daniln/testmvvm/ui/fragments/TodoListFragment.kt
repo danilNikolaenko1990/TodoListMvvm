@@ -12,11 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.daniln.testmvvm.AndroidApplication
 import com.daniln.testmvvm.R
-import com.daniln.testmvvm.ui.ListItemViewModel
-import com.daniln.testmvvm.ui.ListItemViewModelFactory
+import com.daniln.testmvvm.ui.viewModel.ListItemViewModel
+import com.daniln.testmvvm.ui.viewModel.ListItemViewModelFactory
 import com.daniln.testmvvm.ui.adapters.ItemsAdapter
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.cell.*
 import kotlinx.android.synthetic.main.fragment_todo_list.*
 import javax.inject.Inject
 

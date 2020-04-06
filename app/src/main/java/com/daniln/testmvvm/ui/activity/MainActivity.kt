@@ -1,4 +1,4 @@
-package com.daniln.testmvvm.ui
+package com.daniln.testmvvm.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

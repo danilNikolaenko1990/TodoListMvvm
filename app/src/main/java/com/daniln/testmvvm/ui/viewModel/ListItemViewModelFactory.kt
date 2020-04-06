@@ -1,4 +1,4 @@
-package com.daniln.testmvvm.ui
+package com.daniln.testmvvm.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -4,7 +4,9 @@ import android.content.Context
 import com.daniln.testmvvm.ui.fragments.TodoListFragment
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [DatabaseModule::class, ViewModelModule::class])
 interface AppComponent {
     @Component.Factory

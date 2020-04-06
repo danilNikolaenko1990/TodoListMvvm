@@ -1,16 +1,17 @@
-package com.daniln.testmvvm.ui
+package com.daniln.testmvvm.ui.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.daniln.testmvvm.domain.Item
 import com.daniln.testmvvm.domain.ItemRepository
 import kotlinx.coroutines.*
+import androidx.lifecycle.viewModelScope
 
 class ListItemViewModel(private val itemRepository: ItemRepository) : ViewModel() {
     val items: LiveData<List<Item>> = itemRepository.getAll()
 
     fun add(text: String) {
-        GlobalScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
                 itemRepository.insert(Item(text))
             }
@@ -18,7 +19,7 @@ class ListItemViewModel(private val itemRepository: ItemRepository) : ViewModel(
     }
 
     fun removeAll() {
-        GlobalScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
                 itemRepository.deleteAll()
             }
